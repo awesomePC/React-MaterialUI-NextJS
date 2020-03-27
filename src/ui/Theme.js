@@ -1,5 +1,5 @@
 import {
-  createMuiTheme,
+  createMuiTheme
   //   makeStyles,
   //   ThemeProvider,
 } from "@material-ui/core/styles";
@@ -12,65 +12,65 @@ export default createMuiTheme({
   palette: {
     common: {
       blue: `${arcBlue}`,
-      orange: `${arcOrange}`,
+      orange: `${arcOrange}`
     },
     primary: {
-      main: `${arcBlue}`,
+      main: `${arcBlue}`
     },
     secondary: {
-      main: `${arcOrange}`,
-    },
+      main: `${arcOrange}`
+    }
   },
   typography: {
     tab: {
       fontFamily: "Raleway",
       textTransform: "none",
       fontWeight: 700,
-      fontSize: "1em",
+      fontSize: "1em"
     },
     h1: {
-      fontFamily: "Ralewway",
+      fontFamily: "Raleway",
       fontWeight: 700,
       fontSize: "2.5rem",
       color: arcBlue,
-      lineHeight: 1.5,
+      lineHeight: 1.5
     },
     h3: {
       fontFamily: "Pacifico",
       fontSize: "2.5rem",
-      color: arcBlue,
+      color: arcBlue
     },
     h4: {
       fontFamily: "Raleway",
       fontSize: "1.75rem",
       color: arcBlue,
-      fontWeight: 700,
+      fontWeight: 700
     },
     h6: {
       fontWeight: 500,
       fontFamily: "Raleway",
       color: arcBlue,
-      lineHeight: 1,
+      lineHeight: 1
     },
     subtitle1: {
       fontSize: "1.25rem",
       fontWeight: 300,
-      color: arcGrey,
+      color: arcGrey
     },
     subtitle2: {
       color: "white",
       fontSize: "1.25rem",
-      fontWeight: 300,
+      fontWeight: 300
     },
     body1: {
       fontSize: "1.25em",
       color: arcGrey,
-      fontWeight: 300,
+      fontWeight: 300
     },
     caption: {
       fontSize: "1rem",
       fontWeight: 300,
-      color: arcGrey,
+      color: arcGrey
     },
     learnButton: {
       borderColor: arcBlue,
@@ -79,7 +79,7 @@ export default createMuiTheme({
       textTransform: "none",
       borderRadius: 50,
       fontFamily: "Roboto",
-      fontWeight: "bold",
+      fontWeight: "bold"
     },
     estimate: {
       borderRadius: "50px",
@@ -89,32 +89,32 @@ export default createMuiTheme({
       fontSize: "1rem",
       textTransform: "none",
       height: "45px",
-      color: "white",
+      color: "white"
       // "&:hover": {
       //   backgroundColor: theme.palette.secondary.light,
       // },
-    },
+    }
   },
   overrides: {
     MuiInputLabel: {
       root: {
         color: arcBlue,
-        fontSize: "1rem",
-      },
+        fontSize: "1rem"
+      }
     },
     MuiInput: {
       root: {
         color: arcGrey,
-        fontWeight: 300,
+        fontWeight: 300
       },
       underline: {
         "&:before": {
-          borderBottom: `2px solid ${arcBlue} `,
+          borderBottom: `2px solid ${arcBlue} `
         },
         "&:hover:not($disabled):not($focused):not($error):before": {
-          borderBottom: `2px solid ${arcBlue} `,
-        },
-      },
-    },
-  },
+          borderBottom: `2px solid ${arcBlue} `
+        }
+      }
+    }
+  }
 });

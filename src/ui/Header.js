@@ -25,11 +25,11 @@ function ElevationScroll(props) {
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 0,
+    threshold: 0
   });
 
   return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
+    elevation: trigger ? 4 : 0
   });
 }
 
@@ -39,35 +39,35 @@ const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar,
     marginBottom: "3em",
     [theme.breakpoints.down("md")]: {
-      marginBottom: "2em",
+      marginBottom: "2em"
     },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: "1.25em",
-    },
+      marginBottom: "1.25em"
+    }
   },
   logo: {
     height: "8em",
     [theme.breakpoints.down("md")]: {
-      height: "7em",
+      height: "7em"
     },
     [theme.breakpoints.down("xs")]: {
-      height: "5.5em",
-    },
+      height: "5.5em"
+    }
   },
   logoContainer: {
     padding: 0,
     "&:hover": {
-      backgroundColor: "transparent",
-    },
+      backgroundColor: "transparent"
+    }
   },
   tabContainer: {
-    marginLeft: "auto",
+    marginLeft: "auto"
   },
   tab: {
     ...theme.typography.tab,
     minWidth: 10,
     marginLeft: "25px",
-    // color: "white",
+    color: "white"
   },
   button: {
     borderRadius: "50px",
@@ -79,52 +79,52 @@ const useStyles = makeStyles(theme => ({
     height: "45px",
     color: "white",
     "&:hover": {
-      backgroundColor: theme.palette.secondary.light,
-    },
+      backgroundColor: theme.palette.secondary.light
+    }
   },
   menu: {
     backgroundColor: theme.palette.common.blue,
     color: "white",
-    borderRadius: "0px",
+    borderRadius: "0px"
   },
   menuItem: {
     ...theme.typography.tab,
     opacity: 0.7,
     "&:hover": {
-      opacity: 1,
+      opacity: 1
     },
-    color: "white",
+    color: "white"
   },
   drawerIconContainer: {
     marginLeft: "auto",
     "&:hover": {
-      backgroundColor: "transparent",
-    },
+      backgroundColor: "transparent"
+    }
   },
   drawerIcon: {
     height: "50px",
-    width: "50px",
+    width: "50px"
   },
   drawer: {
-    backgroundColor: theme.palette.common.blue,
+    backgroundColor: theme.palette.common.blue
   },
   drawerItem: {
     ...theme.typography.tab,
     color: "white",
-    opacity: 0.7,
+    opacity: 0.7
   },
   drawerItemEstimate: {
-    backgroundColor: theme.palette.common.orange,
+    backgroundColor: theme.palette.common.orange
   },
   drawerItemSelected: {
     "& .MuiListItemText-root": {
-      opacity: 1,
-    },
+      opacity: 1
+    }
   },
   appbar: {
     // Determines which elements appear on top other element. Higher zIndex places further on top of the screen
-    zIndex: theme.zIndex.modal + 1,
-  },
+    zIndex: theme.zIndex.modal + 1
+  }
 }));
 
 export default function Header(props) {
@@ -170,20 +170,20 @@ export default function Header(props) {
       name: "Custom Software Developmemt",
       link: "/customsoftware",
       activeIndex: 1,
-      selectedIndex: 1,
+      selectedIndex: 1
     },
     {
       name: "iOS/Android App Development",
       link: "/mobileapps",
       activeIndex: 1,
-      selectedIndex: 2,
+      selectedIndex: 2
     },
     {
       name: "Websites Development",
       link: "/websites",
       activeIndex: 1,
-      selectedIndex: 3,
-    },
+      selectedIndex: 3
+    }
   ];
 
   const routes = [
@@ -194,11 +194,11 @@ export default function Header(props) {
       activeIndex: 1,
       ariaOwns: anchorEl ? "simple-menu" : undefined,
       ariaPopup: anchorEl ? "true" : undefined,
-      mouseOver: event => handleClick(event),
+      mouseOver: event => handleClick(event)
     },
     { name: "Revolution", link: "/revolution", activeIndex: 2 },
     { name: "Contact Us", link: "/contact", activeIndex: 3 },
-    { name: "About Us", link: "/about", activeIndex: 4 },
+    { name: "About Us", link: "/about", activeIndex: 4 }
   ];
 
   //   REACT useEffect hook
@@ -338,7 +338,7 @@ export default function Header(props) {
             href="/estimate"
             classes={{
               root: classes.drawerItemEstimate,
-              selected: classes.drawerItemSelected,
+              selected: classes.drawerItemSelected
             }}
             selected={props.value === 5}
           >
