@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: https://arc.com/sitemap_local.xml
+Disallow:
