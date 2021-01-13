@@ -19,10 +19,11 @@ export default class MyDocument extends Document {
           <meta property="og:image:height" content="630" />
           <meta property="og:image:alt" content="company logo" />
           <link rel="icon" href="/favicon.png" />
-          <link
+          {/* Google font link is used in Fonts.js file */}
+          {/* <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Pacifico|Raleway:100,400,400i,700|Roboto:300,400,500,700&display=swap"
-          />
+          /> */}
         </Head>
         <body style={{ margin: 0 }}>
           <Main />
@@ -33,7 +34,7 @@ export default class MyDocument extends Document {
   }
 }
 
-MyDocument.getInitialProps = async ctx => {
+MyDocument.getInitialProps = async (ctx) => {
   // Resolution order
   //
   // On the server:
@@ -62,7 +63,7 @@ MyDocument.getInitialProps = async ctx => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: App => props => sheets.collect(<App {...props} />),
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
     });
 
   const initialProps = await Document.getInitialProps(ctx);

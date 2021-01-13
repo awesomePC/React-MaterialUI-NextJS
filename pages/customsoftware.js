@@ -16,7 +16,7 @@ import uxAnimation from "../src/animations/uxAnimation/data";
 
 import CallToAction from "../src/ui/CallToAction";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   heading: {
     maxWidth: "40em",
   },
@@ -127,7 +127,15 @@ export default function CustomSoftware(props) {
         {/* Main Contents */}
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography align={matchesMD ? "center" : undefined} variant="h1">
+            <Typography
+              align={matchesMD ? "center" : undefined}
+              variant="h1"
+              style={{
+                lineHeight: matchesXS ? 1.1 : null,
+                marginBottom: matchesXS ? "0.5em" : null,
+                fontSize: "2.25em",
+              }}
+            >
               Custom Software Development
             </Typography>
           </Grid>
@@ -258,6 +266,7 @@ export default function CustomSoftware(props) {
         direction={matchesMD ? "column" : "row"}
         className={classes.rowContainer}
         justify="space-between"
+        // style={{ display: matchesMD ? "grid" : undefined }}
       >
         <Grid
           item
@@ -317,7 +326,7 @@ export default function CustomSoftware(props) {
           direction={matchesSM ? "column" : "row"}
           md // not sure
         >
-          <Grid item md>
+          <Grid item md style={{ marginBottom: matchesSM ? "2em" : null }}>
             {/* To stop the animation isStopped={true} can be added in the Lottie component */}
             <Lottie
               options={scaleOptions}
@@ -433,7 +442,7 @@ export default function CustomSoftware(props) {
               </Typography>
             </Grid>
           </Grid>
-          {/* Lottie component */}
+          {/* Lottie component for Automation */}
           <Grid item md>
             {/* To stop the animation isStopped={true} can be added in the Lottie component */}
             <Lottie
@@ -449,8 +458,8 @@ export default function CustomSoftware(props) {
           className={classes.itemContainer}
           direction={matchesSM ? "column" : "row"}
         >
-          {/* Lottie component */}
-          <Grid item md>
+          {/* Lottie component for User Experience */}
+          <Grid item md style={{ marginBottom: matchesSM ? "2em" : null }}>
             {/* To stop the animation isStopped={true} can be added in the Lottie component */}
             <Lottie
               options={uxOptions}

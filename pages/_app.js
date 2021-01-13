@@ -5,6 +5,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import Theme from "../src/ui/Theme";
 import Header from "../src/ui/Header";
 import Footer from "../src/ui/Footer";
+import Fonts from "../src/ui/Fonts";
 
 export default class MyApp extends App {
   constructor(props) {
@@ -13,15 +14,17 @@ export default class MyApp extends App {
     this.state = { value: 0, selectedIndex: 0 };
   }
 
-  setValue = index => {
+  setValue = (index) => {
     this.setState({ value: index });
   };
 
-  setSelectedIndex = index => {
+  setSelectedIndex = (index) => {
     this.setState({ selectedIndex: index });
   };
 
   componentDidMount() {
+    Fonts();
+
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {

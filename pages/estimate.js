@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Head from "next/head";
 import axios from "axios";
 import { cloneDeep } from "lodash"; // To work with nested arrays and objects
@@ -18,7 +18,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import estimateAnimation from "../src/animations/estimateAnimation/data.json";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   icon: {
     width: "10em",
     height: "10em",
@@ -310,6 +310,8 @@ export default function Estimate() {
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
+  const myRef = useRef(null);
+
   const [questions, setQuestions] = useState(defaultQuestions);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [name, setName] = useState("");
@@ -349,8 +351,11 @@ export default function Estimate() {
   };
 
   const nextQuestion = () => {
+    if (matchesSM) {
+      window.scrollTo(0, myRef.current.offsetTop + 75);
+    }
     const newQuestions = cloneDeep(questions);
-    const currentlyActive = newQuestions.filter(question => question.active);
+    const currentlyActive = newQuestions.filter((question) => question.active);
     const activeIndex = currentlyActive[0].id - 1;
     const nextIndex = activeIndex + 1;
 
@@ -361,8 +366,11 @@ export default function Estimate() {
   };
 
   const previousQuestion = () => {
+    if (matchesSM) {
+      window.scrollTo(0, myRef.current.offsetTop + 75);
+    }
     const newQuestions = cloneDeep(questions);
-    const currentlyActive = newQuestions.filter(question => question.active);
+    const currentlyActive = newQuestions.filter((question) => question.active);
     const activeIndex = currentlyActive[0].id - 1;
     const nextIndex = activeIndex - 1;
 
@@ -373,7 +381,7 @@ export default function Estimate() {
   };
 
   const navigationPreviousDisabled = () => {
-    const currentlyActive = questions.filter(question => question.active);
+    const currentlyActive = questions.filter((question) => question.active);
 
     if (currentlyActive[0].id === 1) {
       return true;
@@ -383,7 +391,7 @@ export default function Estimate() {
   };
 
   const navigationNextDisabled = () => {
-    const currentlyActive = questions.filter(question => question.active);
+    const currentlyActive = questions.filter((question) => question.active);
 
     if (currentlyActive[0].id === questions[questions.length - 1].id) {
       return true;
@@ -392,14 +400,14 @@ export default function Estimate() {
     }
   };
 
-  const handleSelect = id => {
+  const handleSelect = (id) => {
     const newQuestions = cloneDeep(questions);
-    const currentlyActive = newQuestions.filter(question => question.active);
+    const currentlyActive = newQuestions.filter((question) => question.active);
     const activeIndex = currentlyActive[0].id - 1;
 
     const newSelected = newQuestions[activeIndex].options[id - 1];
     const previousSelected = currentlyActive[0].options.filter(
-      option => option.selected
+      (option) => option.selected
     );
 
     switch (currentlyActive[0].subtitle) {
@@ -416,6 +424,9 @@ export default function Estimate() {
     }
     switch (newSelected.title) {
       case "Custom Software Development":
+        if (matchesSM) {
+          window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         setQuestions(softwareQuestions);
         setService(newSelected.title);
         setPlatforms([]);
@@ -426,6 +437,9 @@ export default function Estimate() {
         break;
 
       case "iOS/Android App Development":
+        if (matchesSM) {
+          window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         setQuestions(softwareQuestions);
         setService(newSelected.title);
         setPlatforms([]);
@@ -436,6 +450,9 @@ export default function Estimate() {
         break;
 
       case "Website Development":
+        if (matchesSM) {
+          window.scrollTo(0, myRef.current.offsetTop + 75);
+        }  
         setQuestions(websiteQuestions);
         setService(newSelected.title);
         setPlatforms([]);
@@ -450,7 +467,7 @@ export default function Estimate() {
     }
   };
 
-  const onChange = event => {
+  const onChange = (event) => {
     let valid;
     switch (event.target.id) {
       case "email":
@@ -486,15 +503,17 @@ export default function Estimate() {
 
     // This should return an array filled with all of the object in each option
     const selections = questions
-      .map(question => question.options.filter(option => option.selected))
-      .filter(question => question.length > 0);
+      .map((question) => question.options.filter((option) => option.selected))
+      .filter((question) => question.length > 0);
 
-    selections.map(options => options.map(option => (cost += option.cost)));
+    selections.map((options) => options.map((option) => (cost += option.cost)));
     if (questions.length > 2) {
       const userCost = questions
-        .filter(question => question.title === "How many users do you expect?")
-        .map(question =>
-          question.options.filter(option => option.selected)
+        .filter(
+          (question) => question.title === "How many users do you expect?"
+        )
+        .map((question) =>
+          question.options.filter((option) => option.selected)
         )[0][0];
 
       setUsers(userCost.title);
@@ -511,11 +530,13 @@ export default function Estimate() {
     if (questions.length > 2) {
       questions
         .filter(
-          question =>
+          (question) =>
             question.title === "Which platforms do you need supported?"
         )
-        .map(question => question.options.filter(option => option.selected))[0]
-        .map(option => newPlatforms.push(option.title));
+        .map((question) =>
+          question.options.filter((option) => option.selected)
+        )[0]
+        .map((option) => newPlatforms.push(option.title));
       setPlatforms(newPlatforms);
     }
   };
@@ -526,11 +547,12 @@ export default function Estimate() {
     if (questions.length > 2) {
       questions
         .filter(
-          question => question.title === "Which features do you expect to use?"
+          (question) =>
+            question.title === "Which features do you expect to use?"
         )
-        .map(question => question.options.filter(option => option.selected))
-        .map(option =>
-          option.map(newFeature => newFeatures.push(newFeature.title))
+        .map((question) => question.options.filter((option) => option.selected))
+        .map((option) =>
+          option.map((newFeature) => newFeatures.push(newFeature.title))
         );
       setFeatures(newFeatures);
     }
@@ -540,12 +562,12 @@ export default function Estimate() {
     if (questions.length > 2) {
       const newCustomFeatures = questions
         .filter(
-          question =>
+          (question) =>
             question.title ===
             "What type of custom features do you expect to need?"
         )
-        .map(question =>
-          question.options.filter(option => option.selected)
+        .map((question) =>
+          question.options.filter((option) => option.selected)
         )[0][0].title;
       setCustomFeatures(newCustomFeatures);
     }
@@ -555,10 +577,10 @@ export default function Estimate() {
     if (questions.length === 2) {
       const newCategory = questions
         .filter(
-          question =>
+          (question) =>
             question.title === "Which type of website are you wanting?"
         )[0]
-        .options.filter(option => option.selected)[0].title;
+        .options.filter((option) => option.selected)[0].title;
       setCategory(newCategory);
     }
   };
@@ -584,7 +606,7 @@ export default function Estimate() {
           },
         }
       )
-      .then(res => {
+      .then((res) => {
         setLoading(false);
         setAlert({
           open: true,
@@ -593,7 +615,7 @@ export default function Estimate() {
         });
         setDialogOpen(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         setLoading(false);
         setAlert({
@@ -607,19 +629,28 @@ export default function Estimate() {
   const estimateDisabled = () => {
     let disabled = true;
     const emptySelections = questions
-      .map(question => question.options.filter(option => option.selected))
-      .filter(question => question.length === 0);
+      .filter(
+        (question) => question.title !== "Which features do you expect to use?"
+      )
+      .map((question) => question.options.filter((option) => option.selected))
+      .filter((question) => question.length === 0);
+
+    // console.log(emptySelections);
+
+    const featuresSelected = questions
+      .filter(
+        (question) => question.title === "Which features do you expect to use?"
+      )
+      .map((question) => question.options.filter((option) => option.selected))
+      .filter((selections) => selections.length > 0);
+    // console.log(featuresSelected);
     if (questions.length === 2) {
       if (emptySelections.length === 1) {
         disabled = false;
       }
     } else if (questions.length === 1) {
       disabled = true;
-    } else if (
-      emptySelections.length < 3 &&
-      questions[questions.length - 1].options.filter(option => option.selected)
-        .length > 0
-    ) {
+    } else if (emptySelections.length === 1 && featuresSelected.length > 0) {
       disabled = false;
     }
 
@@ -798,10 +829,10 @@ export default function Estimate() {
         style={{ marginRight: matchesMD ? 0 : "2em", marginBottom: "25em" }}
       >
         {questions
-          .filter(question => question.active)
+          .filter((question) => question.active)
           .map((question, index) => (
             <React.Fragment key={index}>
-              <Grid item>
+              <Grid item ref={myRef}>
                 <Typography
                   variant="h1"
                   align="center"
@@ -958,7 +989,7 @@ export default function Estimate() {
                   id="name"
                   fullWidth
                   value={name}
-                  onChange={event => setName(event.target.value)}
+                  onChange={(event) => setName(event.target.value)}
                 />
               </Grid>
               <Grid item style={{ marginBottom: "0.5em" }}>
@@ -994,7 +1025,7 @@ export default function Estimate() {
                   value={message}
                   className={classes.message}
                   id="message"
-                  onChange={event => setMessage(event.target.value)}
+                  onChange={(event) => setMessage(event.target.value)}
                 />
               </Grid>
               <Grid item>

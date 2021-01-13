@@ -13,7 +13,7 @@ import integrationAnimation from "../src/animations/integrationAnimation/data.js
 
 import CallToAction from "../src/ui/CallToAction";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   heading: {
     maxWidth: "40em",
   },
@@ -94,7 +94,15 @@ export default function MobileApps(props) {
         {/* Main Contents */}
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography align={matchesMD ? "center" : undefined} variant="h1">
+            <Typography
+              align={matchesMD ? "center" : undefined}
+              variant="h1"
+              style={{
+                lineHeight: matchesXS ? 1.1 : null,
+                marginBottom: matchesXS ? "0.5em" : null,
+                fontSize: "2.25em",
+              }}
+            >
               iOS/Android App Development
             </Typography>
           </Grid>
@@ -182,7 +190,13 @@ export default function MobileApps(props) {
           </Grid>
         </Grid>
         <Grid item md>
-          <Lottie options={defaultOptions} style={{ maxWidth: "20em" }} />
+          <Lottie
+            options={defaultOptions}
+            style={{
+              maxWidth: matchesMD ? "15em" : "20em",
+              height: matchesMD ? "20em" : undefined,
+            }}
+          />
         </Grid>
         {/* Simultaneous block */}
         <Grid item container direction="column" md>
@@ -221,7 +235,11 @@ export default function MobileApps(props) {
         container
         direction={matchesMD ? "column" : "row"}
         className={classes.rowContainer}
-        style={{ marginBottom: "15em" }}
+        style={{
+          marginBottom: "15em",
+          display: matchesMD ? "grid" : undefined,
+        }}
+        // style={{ marginBottom: "15em"}}
       >
         {/* Extend Functionality */}
         <Grid item container direction="column" alignItems="center" md>
@@ -244,6 +262,8 @@ export default function MobileApps(props) {
           style={{
             marginTop: matchesMD ? "10em" : 0,
             marginBottom: matchesMD ? "10em" : 0,
+            // marginRight: matchesMD ? 0 : "3em",
+            // marginLeft: matchesMD ? 0 : "3em",
           }}
         >
           <Grid item>

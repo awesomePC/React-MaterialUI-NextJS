@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import ButtonArrow from "./ButtonArrow";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   learnButton: {
     ...theme.typography.learnButton,
     fontSize: "0.7rem",
@@ -71,12 +71,21 @@ export default function CallToAction(props) {
       >
         <Grid container direction="column">
           <Grid item>
-            <Typography variant="h2">
+            <Typography
+              variant="h1"
+              gutterBottom
+              style={{ lineHeight: matchesSM ? 1.1 : null }}
+            >
               Simple Software.
               <br />
+              {matchesSM && <br />}
               Revolutionary Results.
             </Typography>
-            <Typography variant="subtitle2" style={{ fontSize: "1.5rem" }}>
+            <Typography
+              variant="subtitle2"
+              gutterBottom
+              style={{ fontSize: matchesSM ? "1.25rem" : "1.5rem" }}
+            >
               Take advantage of the 21st Century.
             </Typography>
             <Grid container justify={matchesSM ? "center" : undefined} item>

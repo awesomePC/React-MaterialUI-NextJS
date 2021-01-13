@@ -61,7 +61,12 @@ export default function Footer(props) {
         <Grid container justify="center" className={classes.mainContaner}>
           {/* Column 1 */}
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              spacing={2}
+              style={{ margin: 0 }}
+            >
               <Grid
                 item
                 component={Link}
@@ -75,7 +80,12 @@ export default function Footer(props) {
           </Grid>
           {/* Column 2 */}
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              spacing={2}
+              style={{ margin: 0 }}
+            >
               <Grid
                 item
                 component={Link}
@@ -128,7 +138,12 @@ export default function Footer(props) {
           </Grid>
           {/* Column 3 */}
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              spacing={2}
+              style={{ margin: 0 }}
+            >
               <Grid
                 item
                 component={Link}
@@ -169,7 +184,12 @@ export default function Footer(props) {
           </Grid>
           {/* Column 4 */}
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              spacing={2}
+              style={{ margin: 0 }}
+            >
               <Grid
                 item
                 component={Link}
@@ -201,7 +221,12 @@ export default function Footer(props) {
           </Grid>
           {/* Column 5 */}
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              spacing={2}
+              style={{ margin: 0 }}
+            >
               <Grid
                 item
                 component={Link}

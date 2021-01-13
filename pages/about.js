@@ -9,7 +9,7 @@ import Hidden from "@material-ui/core/Hidden";
 
 import CallToAction from "../src/ui/CallToAction";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   missionStatement: {
     fontStyle: "italic",
     fontWeight: 300,
@@ -23,6 +23,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       paddingLeft: "1.5em",
       paddingRight: "1.5em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "1em",
+      paddingRight: "1em",
     },
   },
   avatar: {

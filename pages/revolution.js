@@ -10,7 +10,7 @@ import technologyAnimation from "../src/animations/technologyAnimation/data.json
 
 import CallToAction from "../src/ui/CallToAction";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   rowContainer: {
     paddingLeft: "5em",
     paddingRight: "5em",

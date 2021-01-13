@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { useRouter } from 'next/router';
-import NextLink from 'next/link';
-import MuiLink from '@material-ui/core/Link';
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
+import { useRouter } from "next/router";
+import NextLink from "next/link";
+import MuiLink from "@material-ui/core/Link";
 
 const NextComposed = React.forwardRef(function NextComposed(props, ref) {
   const { as, href, ...other } = props;
@@ -27,7 +27,7 @@ NextComposed.propTypes = {
 function Link(props) {
   const {
     href,
-    activeClassName = 'active',
+    activeClassName = "active",
     className: classNameProps,
     innerRef,
     naked,
@@ -35,17 +35,31 @@ function Link(props) {
   } = props;
 
   const router = useRouter();
-  const pathname = typeof href === 'string' ? href : href.pathname;
+  const pathname = typeof href === "string" ? href : href.pathname;
   const className = clsx(classNameProps, {
     [activeClassName]: router.pathname === pathname && activeClassName,
   });
 
   if (naked) {
-    return <NextComposed className={className} ref={innerRef} href={href} {...other} />;
+    return (
+      <NextComposed
+        className={className}
+        ref={innerRef}
+        href={href}
+        {...other}
+      />
+    );
   }
 
   return (
-    <MuiLink component={NextComposed} className={className} ref={innerRef} href={href} {...other} />
+    <MuiLink
+      underline="none"
+      component={NextComposed}
+      className={className}
+      ref={innerRef}
+      href={href}
+      {...other}
+    />
   );
 }
 
@@ -60,4 +74,6 @@ Link.propTypes = {
   prefetch: PropTypes.bool,
 };
 
-export default React.forwardRef((props, ref) => <Link {...props} innerRef={ref} />);
+export default React.forwardRef((props, ref) => (
+  <Link {...props} innerRef={ref} />
+));
