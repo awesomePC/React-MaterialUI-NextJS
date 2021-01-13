@@ -242,31 +242,25 @@ export default function Header(props) {
     { name: "About Us", link: "/about", activeIndex: 4 },
   ];
 
-  //   REACT useEffect hook
+  const path = typeof window !== "undefined" ? window.location.search : null;
+
+  const activeIndex = () => {
+    const found = routes.find((route) => route.link === path);
+    const menuFound = menuOptions.find(({ link }) => link === path);
+
+    if (menuFound) {
+      props.setValue(1);
+      props.setSelectedIndex(menuFound.selectedIndex);
+    } else if (found === undefined) {
+      props.setValue(false);
+    } else {
+      props.setValue(found.activeIndex);
+    }
+  };
+
   useEffect(() => {
-    [...menuOptions, ...routes].forEach((route) => {
-      switch (window.location.pathname) {
-        case `${route.link}`:
-          if (props.value !== route.activeIndex) {
-            props.setValue(route.activeIndex);
-            if (
-              route.selectedIndex &&
-              route.selectedIndex !== props.selectedIndex
-            ) {
-              props.setSelectedIndex(route.selectedIndex);
-            }
-          }
-          break;
-        case "/estimate":
-          if (props.value !== 5) {
-            props.setValue(5);
-          }
-          break;
-        default:
-          break;
-      }
-    });
-  }, [props.value, menuOptions, props.selectedIndex, routes, props]);
+    activeIndex();
+  }, [path]);
 
   //   TABS
   const tabs = (

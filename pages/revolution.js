@@ -10,6 +10,8 @@ import technologyAnimation from "../src/animations/technologyAnimation/data.json
 
 import CallToAction from "../src/ui/CallToAction";
 
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 const useStyles = makeStyles((theme) => ({
   rowContainer: {
     paddingLeft: "5em",
@@ -74,7 +76,9 @@ export default function Revolution(props) {
         style={{ marginTop: "5em" }}
       >
         <Grid item lg>
-          <img
+          <LazyLoadImage
+            threshold={400}
+            age
             src="/assets/vision.svg"
             alt="Mountain through binoculars"
             style={{
@@ -320,7 +324,8 @@ export default function Revolution(props) {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: "center" }}>
-          <img
+          <LazyLoadImage
+            threshold={400}
             src="/assets/consultationIcon.svg"
             alt="handshake"
             width="100%"
@@ -386,7 +391,8 @@ export default function Revolution(props) {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: "center" }}>
-          <img
+          <LazyLoadImage
+            threshold={400}
             src="/assets/mockupIcon.svg"
             alt="basic website design outline"
             width="100%"
@@ -453,7 +459,8 @@ export default function Revolution(props) {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: "center" }}>
-          <img
+          <LazyLoadImage
+            threshold={400}
             src="/assets/reviewIcon.svg"
             alt="magnifying glass"
             width="100%"
@@ -510,7 +517,8 @@ export default function Revolution(props) {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: "center" }}>
-          <img
+          <LazyLoadImage
+            threshold={400}
             src="/assets/designIcon.svg"
             alt="paint brush leaving stroke of paint"
             width="100%"
@@ -567,7 +575,8 @@ export default function Revolution(props) {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: "center" }}>
-          <img
+          <LazyLoadImage
+            threshold={400}
             src="/assets/reviewIcon.svg"
             alt="magnifying glass"
             width="100%"
@@ -661,7 +670,8 @@ export default function Revolution(props) {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: "center" }}>
-          <img
+          <LazyLoadImage
+            threshold={400}
             src="/assets/buildIcon.svg"
             alt="building construction site"
             width="100%"
@@ -728,7 +738,8 @@ export default function Revolution(props) {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: "center" }}>
-          <img
+          <LazyLoadImage
+            threshold={400}
             src="/assets/launchIcon.svg"
             alt="rocket"
             width="100%"
@@ -794,7 +805,8 @@ export default function Revolution(props) {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: "center" }}>
-          <img
+          <LazyLoadImage
+            threshold={400}
             src="/assets/maintainIcon.svg"
             alt="wrench tightening bolts"
             width="100%"
@@ -862,7 +874,8 @@ export default function Revolution(props) {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: "center" }}>
-          <img
+          <LazyLoadImage
+            threshold={400}
             src="/assets/iterateIcon.svg"
             alt="falling dominoes"
             width="100%"

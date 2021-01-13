@@ -7,6 +7,8 @@ import Header from "../src/ui/Header";
 import Footer from "../src/ui/Footer";
 import Fonts from "../src/ui/Fonts";
 
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+
 export default class MyApp extends App {
   constructor(props) {
     super(props);
@@ -56,10 +58,12 @@ export default class MyApp extends App {
             setSelectedIndex={this.setSelectedIndex}
             setValue={this.setValue}
           />
-          <Footer
-            setSelectedIndex={this.setSelectedIndex}
-            setValue={this.setValue}
-          />
+          <LazyLoadComponent threshold={400}>
+            <Footer
+              setSelectedIndex={this.setSelectedIndex}
+              setValue={this.setValue}
+            />
+          </LazyLoadComponent>
         </ThemeProvider>
       </React.Fragment>
     );
